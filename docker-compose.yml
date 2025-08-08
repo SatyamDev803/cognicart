@@ -1,0 +1,27 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/code # Mount the whole backend directory
+    env_file:
+      - ./backend/.env.docker # Use the docker-specific env file
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432" # Keep this on 5432 for the Docker-only setup
+    env_file:
+      - ./backend/.env.docker
+
+  redis:
+    image: redis:alpine
+
+volumes:
+  postgres_data:
