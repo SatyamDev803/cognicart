@@ -1,13 +1,14 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Navbar from "@/components/Navbar"; 
-import Footer from "@/components/Footer"; 
+import Header from "@/components/Header";
+import Sidebar from "@/components/Sidebar";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "CogniCart",
+  title: "CogniCart Dashboard",
   description: "AI-Powered E-commerce Analytics",
 };
 
@@ -21,11 +22,16 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <main className="flex-grow">{children}</main>
-            <Footer />
+          <div className="flex min-h-screen">
+            <Sidebar />
+            <div className="flex flex-col flex-1">
+              <Header />
+              <main className="flex-1 p-4 sm:p-6">
+                {children}
+              </main>
+            </div>
           </div>
+          <Toaster position="top-right" />
         </ThemeProvider>
       </body>
     </html>
