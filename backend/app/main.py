@@ -8,10 +8,6 @@ from app.db.session import engine
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # The 'create_all' command is no longer needed.
-    # Alembic will handle creating and updating tables.
-    # async with engine.begin() as conn:
-    #     await conn.run_sync(Base.metadata.create_all)
     yield
     await engine.dispose()
 
