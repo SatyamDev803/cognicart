@@ -1,4 +1,4 @@
-import { getSales, getAnalytics } from "@/lib/data";
+import { getSales, getAnalytics } from "@/lib/sale";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import StatsCard from "@/components/StatsCard";
