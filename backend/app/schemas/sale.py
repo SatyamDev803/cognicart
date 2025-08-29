@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
+from typing import Optional
 
 class SaleBase(BaseModel):
     product_id: str
@@ -9,11 +10,13 @@ class SaleBase(BaseModel):
 class SaleCreate(SaleBase):
     pass
 
-class Sale(BaseModel):
+class SaleUpdate(BaseModel):
+    product_id: Optional[str] = None
+    quantity: Optional[int] = None
+    price_per_unit: Optional[float] = None
+
+class Sale(SaleBase):
     id: int
-    product_id: str
-    quantity: int
-    price_per_unit: float
     created_at: datetime
 
     class Config:
