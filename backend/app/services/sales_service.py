@@ -14,10 +14,12 @@ async def create_new_sale(db: AsyncSession, sale: SaleCreate) -> Sale:
     await db.refresh(db_sale)
     return db_sale
 
+
 async def get_all_sales(db: AsyncSession, skip: int = 0, limit: int = 100) -> List[Sale]:
     query = select(Sale).order_by(Sale.id.desc()).offset(skip).limit(limit)
     result = await db.scalars(query)
     return result.all()
+
 
 async def update_sale(db: AsyncSession, sale_id: int, sale_update: SaleUpdate) -> Sale:
     db_sale = await db.get(Sale, sale_id) 
@@ -34,6 +36,7 @@ async def update_sale(db: AsyncSession, sale_id: int, sale_update: SaleUpdate) -
     await db.refresh(db_sale)
     return db_sale
 
+
 async def delete_sale(db: AsyncSession, sale_id: int) -> None:
     db_sale = await db.get(Sale, sale_id)
     
@@ -43,6 +46,7 @@ async def delete_sale(db: AsyncSession, sale_id: int) -> None:
     await db.delete(db_sale)
     await db.commit()
     return
+
 
 async def get_sales_analytics(db: AsyncSession) -> SalesAnalytics:
     # Use a single query to calculate all metrics at once.
