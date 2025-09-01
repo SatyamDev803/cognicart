@@ -15,13 +15,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MoreHorizontal, ArrowUpDown } from "lucide-react";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
-export default function ProductTable({ products }) {
+export default function ProductTable({ products, onEdit, onDelete }) {
   const [sorting, setSorting] = useState([]);
   const [columnFilters, setColumnFilters] = useState([]);
-  
+
   const columns = [
+    // ... (name and price columns are unchanged)
     {
       accessorKey: "name",
       header: ({ column }) => (
@@ -33,6 +34,10 @@ export default function ProductTable({ products }) {
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       ),
+    },
+    {
+      accessorKey: "description",
+      header: "Description",
     },
     {
       accessorKey: "price",
@@ -59,10 +64,11 @@ export default function ProductTable({ products }) {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => alert(`Editing ${product.name}`)}>
+              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuItem onClick={() => onEdit(product)}>
                 Edit
               </DropdownMenuItem>
-              <DropdownMenuItem className="text-red-500" onClick={() => alert(`Deleting ${product.name}`)}>
+              <DropdownMenuItem className="text-red-500" onClick={() => onDelete(product)}>
                 Delete
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -73,6 +79,7 @@ export default function ProductTable({ products }) {
   ];
 
   const table = useReactTable({
+    // ... (rest of the component is unchanged)
     data: products,
     columns,
     getCoreRowModel: getCoreRowModel(),
@@ -88,6 +95,7 @@ export default function ProductTable({ products }) {
   });
 
   return (
+    // ... (rest of the component is unchanged)
     <div>
       <div className="flex items-center pb-4">
         <Input
@@ -109,9 +117,9 @@ export default function ProductTable({ products }) {
                     {header.isPlaceholder
                       ? null
                       : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
                   </TableHead>
                 ))}
               </TableRow>
