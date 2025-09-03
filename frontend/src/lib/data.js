@@ -88,6 +88,5 @@ export async function deleteProduct(productId) {
     method: 'DELETE'
   });
   if (!res.ok) throw new Error('Failed to delete product.');
-  // DELETE might not return a body, so we return a success status
-  return { success: true };
+  return res.json();
 }
