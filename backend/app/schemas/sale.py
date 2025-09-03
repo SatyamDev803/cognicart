@@ -1,26 +1,25 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, ConfigDict
 from datetime import datetime
 from typing import Optional
 
 class SaleBase(BaseModel):
-    product_id: str
-    quantity: int
-    price_per_unit: float
+    product_id: str = Field(..., min_length=1)
+    quantity: int = Field(..., gt=0)
+    price_per_unit: float = Field(..., gt=0)
 
 class SaleCreate(SaleBase):
     pass
 
 class SaleUpdate(BaseModel):
-    product_id: Optional[str] = None
-    quantity: Optional[int] = None
-    price_per_unit: Optional[float] = None
+    product_id: Optional[str] = Field(default=None, min_length=1)
+    quantity: Optional[int] = Field(default=None, gt=0)
+    price_per_unit: Optional[float] = Field(default=None, gt=0)
 
 class Sale(SaleBase):
     id: int
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class SalesAnalytics(BaseModel):
     total_revenue: float
