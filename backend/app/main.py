@@ -1,9 +1,12 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, status
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
+
 from app.core.config import settings
 from app.api.v1.router import api_router
 from app.db.session import engine
+from app.exceptions import SaleNotFoundException, ProductNotFoundException
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -15,6 +18,22 @@ app = FastAPI(
     openapi_url=f"{settings.API_V1_STR}/openapi.json",
     lifespan=lifespan
 )
+
+# Global handler for Sale not found
+@app.exception_handler(SaleNotFoundException)
+async def sale_not_found_exception_handler(request: Request, exc: SaleNotFoundException):
+    return JSONResponse(
+        status_code=status.HTTP_404_NOT_FOUND,
+        content={"message": exc.message},
+    )
+
+# Global handler for Product not found
+@app.exception_handler(ProductNotFoundException)
+async def product_not_found_exception_handler(request: Request, exc: ProductNotFoundException):
+    return JSONResponse(
+        status_code=status.HTTP_404_NOT_FOUND,
+        content={"message": exc.message},
+    )
 
 # CORS Middleware
 origins = ["http://localhost:5173", "http://localhost:3000"]
