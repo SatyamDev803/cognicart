@@ -1,177 +1,82 @@
-# CogniCart AI Project
+# CogniCart – AI-Powered E-commerce Analytics Platform
 
-CogniCart is a modern e-commerce analytics platform built with FastAPI and Next.js, featuring AI-powered sales insights and real-time data visualization.
+CogniCart is an AI-powered, full-stack e-commerce analytics platform that transforms raw sales data into actionable insights. Featuring a FastAPI backend and a Next.js frontend, CogniCart leverages AI for natural language data querying and semantic product search.
+
+---
 
 ## 🚀 Features
 
-- **Sales Analytics Dashboard**
-  - Real-time sales tracking
-  - Interactive data visualization
-  - Performance metrics and KPIs
+### 1. Core Data Management
+- **CRUD Operations:** Manage products and sales records.
+- **Advanced Tables:** Interactive data tables with client-side sorting/filtering (TanStack Table).
+- **Optimistic UI:** Instant updates without full-page reloads.
 
-- **Modern UI/UX**
-  - Responsive design
-  - Dark/Light theme support
-  - Shadcn UI components
+### 2. User & Access Control
+- **Authentication:** Secure JWT-based user registration and login.
+- **RBAC:** Role-based permissions for Admins and Viewers.
 
-- **Robust Backend**
-  - FastAPI REST API
-  - SQLAlchemy ORM
-  - Alembic migrations
-  - Docker containerization
+### 3. Analytics & Visualization
+- **Dashboards:** Dynamic charts (Recharts/Chart.js) for KPIs like sales trends and top products.
+- **Backend Aggregations:** FastAPI endpoints for real-time data calculations.
+
+### 4. AI-Powered Tools
+- **Sales Analyst Agent:** Ask natural language questions about your data (RAG pipeline).
+- **Semantic Search:** Vector-embedding search for meaning-based queries.
+
+---
 
 ## 🛠 Tech Stack
 
-### Backend
-- FastAPI (Python 3.12+)
-- SQLAlchemy
-- Alembic
-- PostgreSQL
-- Docker & Docker Compose
-- Poetry for dependency management
+| Area         | Technologies                                                      |
+|--------------|-------------------------------------------------------------------|
+| **Backend**  | Python, FastAPI, SQLAlchemy, Pydantic, Alembic                    |
+| **Database** | PostgreSQL                                                        |
+| **Frontend** | Next.js, React, Tailwind CSS, shadcn/ui, TanStack Table, Sonner   |
+| **DevOps**   | Docker, Docker Compose, Poetry, Conventional Commits, GitHub Actions |
 
-### Frontend
-- Next.js 14
-- Shadcn UI
-- Tailwind CSS
-- React Query
-- TypeScript
+---
 
-## 🏃‍♂️ Getting Started
+## 🏁 Getting Started
 
 ### Prerequisites
-- Python 3.12+
+- Python 3.10+
 - Node.js 18+
 - Docker & Docker Compose
-- Poetry (Python package manager)
-- npm or yarn
+- Poetry
 
-### Backend Setup
+### Backend
+1. `cd backend`
+2. `cp .env.example .env` (edit with your DB URL)
+3. `docker-compose up --build`
+4. Visit `http://localhost:8000`
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/SatyamDev803/cognicart.git
-   cd cognicart
-   ```
+### Frontend
+1. `cd frontend`
+2. `cp .env.local.example .env.local`
+3. `npm install`
+4. `npm run dev`
+5. Visit `http://localhost:3000`
 
-2. **Environment Setup**
-   ```bash
-   cd backend
-   cp .env.example .env  # Configure your environment variables
-   ```
+---
 
-3. **Run with Docker**
-   ```bash
-   docker-compose up --build
-   ```
-   The backend will be available at `http://localhost:8000`
-   API documentation (Swagger UI) at `http://localhost:8000/docs`
+## 📚 API & Database
 
-4. **Run Locally (Alternative)**
-   ```bash
-   cd backend
-   poetry install
-   poetry shell
-   alembic upgrade head
-   uvicorn app.main:app --reload
-   ```
+- **Swagger:** `http://localhost:8000/docs`
+- **ReDoc:** `http://localhost:8000/redoc`
 
-### Frontend Setup
-
-1. **Install dependencies**
-   ```bash
-   cd frontend
-   npm install
-   ```
-
-2. **Start development server**
-   ```bash
-   npm run dev
-   ```
-   The frontend will be available at `http://localhost:3000`
-
-## 📚 API Documentation
-
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
-
-## 🗄 Database Migrations
-
+### Database Migrations
 ```bash
-cd backend
-alembic revision --autogenerate -m "description"
+# In backend directory
+alembic revision --autogenerate -m "Your migration message"
 alembic upgrade head
 ```
 
-## 🧪 Testing
-
-### Backend Tests
-```bash
-cd backend
-pytest
-```
-
-### Frontend Tests
-```bash
-cd frontend
-npm test
-```
-
-## 📝 Development Guidelines
-
-1. **Code Style**
-   - Backend: Follow PEP 8
-   - Frontend: ESLint & Prettier configuration
-
-2. **Git Workflow**
-   - Create feature branches from `main`
-   - Use conventional commits
-   - Submit PRs for review
-
-3. **Environment Variables**
-   - Never commit `.env` files
-   - Use `.env.example` as a template
-
-## 🔒 Security
-
-- All API endpoints are protected with proper authentication
-- Environment variables are properly handled
-- Input validation on both frontend and backend
-- CORS configuration in place
-
-## 📦 Deployment
-
-### Production Build
-
-1. **Backend**
-   ```bash
-   docker-compose -f docker-compose.prod.yml up --build
-   ```
-
-2. **Frontend**
-   ```bash
-   cd frontend
-   npm run build
-   ```
-
-## 📈 Monitoring
-
-- Backend metrics available at `/metrics`
-- Logging configured for production
-- Error tracking integrated
+---
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+Contributions are welcome! Fork the repo, create a feature branch, and submit a pull request.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👥 Authors
-
-- [@SatyamDev803](https://github.com/SatyamDev803)
+MIT License. See the LICENSE file for details.
