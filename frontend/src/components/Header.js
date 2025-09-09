@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import SidebarNav from "./SidebarNav";
-import { ModeToggle } from "./ModeToggle"; // Re-import ModeToggle
+import { ModeToggle } from "./ModeToggle";
 
 export default function Header() {
   return (
@@ -38,7 +38,6 @@ export default function Header() {
         </SheetContent>
       </Sheet>
 
-      {/* This div groups the right-side elements and pushes them to the end */}
       <div className="ml-auto flex items-center gap-4">
         <form>
           <div className="relative">

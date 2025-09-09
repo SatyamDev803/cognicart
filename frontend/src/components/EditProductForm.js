@@ -7,13 +7,11 @@ import { toast } from "sonner";
 import { updateProduct } from "@/lib/data";
 
 export default function EditProductForm({ product, onFinished }) {
-  // State for form fields
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // When the 'product' prop changes, update the form's state
   useEffect(() => {
     if (product) {
       setName(product.name);
@@ -32,7 +30,7 @@ export default function EditProductForm({ product, onFinished }) {
         price: parseFloat(price),
       });
       toast.success("Product updated successfully!");
-      onFinished(updatedProduct); // Pass the full updated object back to the parent
+      onFinished(updatedProduct); 
     } catch (error) {
       toast.error("Failed to update product.");
     } finally {

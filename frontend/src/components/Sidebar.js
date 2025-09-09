@@ -6,7 +6,6 @@ export default function Sidebar() {
   return (
     <div className="hidden border-r md:block">
       <div className="flex h-full max-h-screen flex-col gap-2">
-        {/* We are adding a border back here for a seamless look */}
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
           <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
             <Package className="h-6 w-6" />

@@ -22,7 +22,6 @@ export default function ProductTable({ products, onEdit, onDelete }) {
   const [columnFilters, setColumnFilters] = useState([]);
 
   const columns = [
-    // ... (name and price columns are unchanged)
     {
       accessorKey: "name",
       header: ({ column }) => (
@@ -79,7 +78,6 @@ export default function ProductTable({ products, onEdit, onDelete }) {
   ];
 
   const table = useReactTable({
-    // ... (rest of the component is unchanged)
     data: products,
     columns,
     getCoreRowModel: getCoreRowModel(),
@@ -95,7 +93,6 @@ export default function ProductTable({ products, onEdit, onDelete }) {
   });
 
   return (
-    // ... (rest of the component is unchanged)
     <div>
       <div className="flex items-center pb-4">
         <Input

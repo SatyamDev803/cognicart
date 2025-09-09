@@ -7,17 +7,16 @@ import { toast } from "sonner";
 import { updateSale } from "@/lib/data";
 
 export default function EditSaleForm({ sale, onFinished }) {
-  // State for all form fields, including price
   const [productId, setProductId] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [price, setPrice] = useState(""); // State for price
+  const [price, setPrice] = useState(""); 
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (sale) {
       setProductId(sale.product_id);
       setQuantity(sale.quantity);
-      setPrice(sale.price_per_unit); // Set price state when sale data is available
+      setPrice(sale.price_per_unit); 
     }
   }, [sale]);
 
@@ -28,7 +27,7 @@ export default function EditSaleForm({ sale, onFinished }) {
       const updatedData = await updateSale(sale.id, {
         product_id: productId,
         quantity: parseInt(quantity),
-        price_per_unit: parseFloat(price), // Send the updated price to the API
+        price_per_unit: parseFloat(price), 
       });
       onFinished(updatedData);
     } catch (error) {
@@ -62,7 +61,6 @@ export default function EditSaleForm({ sale, onFinished }) {
         />
       </div>
       <div className="space-y-2">
-        {/* --- FIX: Input is now enabled and controlled by state --- */}
         <Label htmlFor="edit-price">Price Per Unit</Label>
         <Input 
           id="edit-price" 

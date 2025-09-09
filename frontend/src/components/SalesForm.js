@@ -40,7 +40,6 @@ export default function SalesForm({ onFinished }) {
   };
 
   return (
-    // The <Card> wrappers have been removed for a cleaner look inside the dialog
     <form onSubmit={handleSubmit} className="space-y-4 pt-4">
       <div className="space-y-2">
         <Label htmlFor="productId">Product ID</Label>
