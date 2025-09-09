@@ -1,6 +1,6 @@
-const API_URL = "http://localhost:8000/api/v1";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
 
-// --- Sales API ---
+// Sales API 
 export async function getSales() {
   try {
     const res = await fetch(`${API_URL}/sales/`, { cache: 'no-store' });
@@ -48,10 +48,10 @@ export async function deleteSale(saleId) {
     method: 'DELETE'
   });
   if (!res.ok) throw new Error('Failed to delete sale.');
-  return res.json();
+  return res.status === 204 ? { success: true } : res.json();
 }
 
-// --- Products API ---
+// Products API
 export async function getProducts() {
   try {
     const res = await fetch(`${API_URL}/products/`, { cache: 'no-store' });
@@ -88,5 +88,5 @@ export async function deleteProduct(productId) {
     method: 'DELETE'
   });
   if (!res.ok) throw new Error('Failed to delete product.');
-  return res.json();
+  return res.status === 204 ? { success: true } : res.json();
 }
