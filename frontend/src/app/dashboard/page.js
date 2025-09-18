@@ -1,8 +1,17 @@
-import { getSales, getAnalytics } from "@/lib/data";
-import DashboardClient from "./DashboardClient";
+// src/app/dashboard/page.js
+"use client";
 
-export default async function DashboardPage() {
-  const [sales, analytics] = await Promise.all([getSales(), getAnalytics()]);
+import { ChartAreaInteractive } from "@/components/chart-area-interactive";
+import { SectionCards } from "@/components/section-cards";
+import { DashboardPageLayout } from "@/components/dashboard-page-layout";
 
-  return <DashboardClient sales={sales} analytics={analytics} />;
+export default function DashboardPage() {
+  return (
+    <DashboardPageLayout>
+      <SectionCards />
+      <div className="px-4 lg:px-6">
+        <ChartAreaInteractive />
+      </div>
+    </DashboardPageLayout>
+  );
 }
