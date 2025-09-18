@@ -19,6 +19,9 @@ redis = "^5.0.4"
 alembic = "^1.16.4"
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 python-jose = "^3.5.0"
+bcrypt = "3.2.2"
+authlib = "^1.6.3"
+itsdangerous = "^2.2.0"
 
 [build-system]
 requires = ["poetry-core"]
