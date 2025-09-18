@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import Optional
 
 class SaleBase(BaseModel):
-    product_id: str = Field(..., min_length=1)
+    product_id: int = Field(..., gt=0) 
     quantity: int = Field(..., gt=0)
     price_per_unit: float = Field(..., gt=0)
 
@@ -11,7 +11,7 @@ class SaleCreate(SaleBase):
     pass
 
 class SaleUpdate(BaseModel):
-    product_id: Optional[str] = Field(default=None, min_length=1)
+    product_id: Optional[int] = Field(default=None, gt=0) 
     quantity: Optional[int] = Field(default=None, gt=0)
     price_per_unit: Optional[float] = Field(default=None, gt=0)
 
