@@ -18,8 +18,12 @@ async def create_product(
 
 
 @router.get("/", response_model=List[Product], summary="Get all products")
-async def read_products(db: AsyncSession = Depends(get_db)):
-    return await product_service.get_all_products(db=db)
+async def read_products(
+    skip: int = 0, 
+    limit: int = 100, 
+    db: AsyncSession = Depends(get_db)
+):
+    return await product_service.get_all_products(db=db, skip=skip, limit=limit)
 
 
 @router.get("/{product_id}", response_model=Product, summary="Get a single product by ID")
