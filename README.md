@@ -4,7 +4,7 @@ CogniCart is an AI-powered, full-stack e-commerce analytics platform that transf
 
 ---
 
-## 🚀 Features
+## Features
 
 ### 1. Core Data Management
 - **CRUD Operations:** Manage products and sales records.
@@ -25,7 +25,7 @@ CogniCart is an AI-powered, full-stack e-commerce analytics platform that transf
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Area         | Technologies                                                      |
 |--------------|-------------------------------------------------------------------|
@@ -36,7 +36,7 @@ CogniCart is an AI-powered, full-stack e-commerce analytics platform that transf
 
 ---
 
-## 🏁 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Python 3.10+
@@ -59,7 +59,7 @@ CogniCart is an AI-powered, full-stack e-commerce analytics platform that transf
 
 ---
 
-## 📚 API & Database
+## API & Database
 
 - **Swagger:** `http://localhost:8000/docs`
 - **ReDoc:** `http://localhost:8000/redoc`
@@ -73,10 +73,10 @@ alembic upgrade head
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Fork the repo, create a feature branch, and submit a pull request.
 
-## 📄 License
+## License
 
 MIT License. See the LICENSE file for details.
