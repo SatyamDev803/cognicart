@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { FcGoogle } from "react-icons/fc";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -49,7 +50,6 @@ export default function LoginPage() {
               <Input
                 id="email"
                 type="email"
-                placeholder="m@example.com"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)} // <-- CORRECTED LINE
@@ -72,7 +72,12 @@ export default function LoginPage() {
           <CardFooter className="flex flex-col gap-4 pt-4">
             <Button type="submit" className="w-full" disabled={loading}>{loading ? "Signing in..." : "Sign in"}</Button>
             <div className="relative w-full"><div className="absolute inset-0 flex items-center"><span className="w-full border-t" /></div><div className="relative flex justify-center text-xs uppercase"><span className="bg-card px-2 text-muted-foreground">Or continue with</span></div></div>
-            <Button variant="outline" className="w-full" asChild><a href={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1'}/auth/google/login`}>Sign in with Google</a></Button>
+            <Button variant="outline" className="w-full flex items-center gap-2" asChild>
+  <a href={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1'}/auth/google/login`}>
+    <FcGoogle className="w-5 h-5" />
+    Login in with Google
+  </a>
+</Button>
           </CardFooter>
         </form>
         <div className="mt-4 text-center text-sm">Don&apos;t have an account?{" "}<Link href="/register" className="underline">Sign up</Link></div>
