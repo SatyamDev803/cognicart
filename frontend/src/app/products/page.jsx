@@ -30,13 +30,13 @@ export default function ProductsPage() {
   const [productToDelete, setProductToDelete] = useState(null);
   const [columnVisibility, setColumnVisibility] = useState({});
   const [sorting, setSorting] = useState([]);
-  const [globalFilter, setGlobalFilter] = useState(''); 
+  const [globalFilter, setGlobalFilter] = useState('');
 
   const queryClient = useQueryClient();
   const { user } = useAuth();
 
   useEffect(() => {
-    if (isMobile) { setColumnVisibility({ description: false }); } 
+    if (isMobile) { setColumnVisibility({ description: false }); }
     else { setColumnVisibility({}); }
   }, [isMobile]);
 
@@ -56,13 +56,13 @@ export default function ProductsPage() {
       <div className="flex items-center justify-between">
         <h1 className="text-lg font-semibold md:text-2xl">Manage Products</h1>
         <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-          {user?.role === 'admin' && ( <DialogTrigger asChild><Button onClick={() => setSelectedProduct(null)}><IconPlus className="mr-2 size-4" /> Add Product</Button></DialogTrigger> )}
+          {user?.role === 'admin' && (<DialogTrigger asChild><Button onClick={() => setSelectedProduct(null)}><IconPlus className="mr-2 size-4" /> Add Product</Button></DialogTrigger>)}
           <DialogContent className="sm:max-w-[425px]"><DialogHeader><DialogTitle>{selectedProduct ? "Edit Product" : "Create New Product"}</DialogTitle><DialogDescription>{selectedProduct ? "Make changes here." : "Add a new product."} Click save when done.</DialogDescription></DialogHeader><div className="py-4"><ProductForm onSubmit={handleDialogSubmit} initialData={selectedProduct} isSubmitting={isCreating || isUpdating} /></div></DialogContent>
         </Dialog>
       </div>
       {isLoading && <Skeleton className="h-96 w-full" />}
       {error && <div className="text-red-500">Failed to load products.</div>}
-      {products && <DataTable columns={columns} data={products} columnVisibility={columnVisibility} setColumnVisibility={setColumnVisibility} globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} sorting={sorting} setSorting={setSorting}/>}
+      {products && <DataTable columns={columns} data={products} columnVisibility={columnVisibility} setColumnVisibility={setColumnVisibility} globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} sorting={sorting} setSorting={setSorting} />}
       <AlertDialog open={isAlertOpen} onOpenChange={setIsAlertOpen}><AlertDialogContent><AlertDialogHeader><AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle><AlertDialogDescription>This action cannot be undone. This will permanently delete the product.</AlertDialogDescription></AlertDialogHeader><AlertDialogFooter><AlertDialogCancel>Cancel</AlertDialogCancel><AlertDialogAction onClick={handleDeleteConfirm}>Continue</AlertDialogAction></AlertDialogFooter></AlertDialogContent></AlertDialog>
     </DashboardPageLayout>
   );
