@@ -1,4 +1,3 @@
-import email
 from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession 
 from sqlalchemy.future import select
@@ -11,6 +10,10 @@ from app.core.security import get_password_hash, verify_password
 async def get_user_by_email(db: AsyncSession, email: str) -> Optional[User]:
     result = await db.execute(select(User).filter(User.email == email))
     return result.scalars().first()
+
+async def get_user_by_id(db: AsyncSession, user_id: int) -> Optional[User]:
+    user = await db.get(User, user_id)
+    return user
 
 async def create_user(db: AsyncSession, user: UserCreate) -> User:
     db_user = await get_user_by_email(db, email=user.email)
@@ -55,7 +58,7 @@ async def get_or_create_user_from_google(db: AsyncSession, user_info: dict) -> U
     else:
         new_user = User(
             email=user_info['email'],
-            name=user_info.get('name'), # <-- ADD THIS LINE
+            name=user_info.get('name'),
             google_id = user_info.get('sub'),
             hashed_password = None,
             role = "viewer"
