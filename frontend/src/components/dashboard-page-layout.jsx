@@ -1,4 +1,3 @@
-// src/components/dashboard-page-layout.jsx
 "use client";
 
 import { useEffect } from "react";
@@ -8,27 +7,24 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { SiteHeader } from "@/components/site-header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/sonner";
-import { Skeleton } from "@/components/ui/skeleton";
 
 export function DashboardPageLayout({ children }) {
-  const { user, token, loading } = useAuth();
+  const { user, loading } = useAuth();
   const router = useRouter();
 
-  // --- This is the protection logic ---
   useEffect(() => {
     // Wait until the initial loading is finished
-    if (!loading && !token) {
-      // If not loading and there's no token, redirect to login.
+    if (!loading && !user) {
+      // If not loading and there's no USER, redirect to login.
       router.push("/login");
     }
-  }, [token, loading, router]);
-  // ------------------------------------
+  }, [user, loading, router]);
 
-  // While checking the auth state, show a loading skeleton.
-  if (loading || !token) {
+  // While checking the auth state, or if there is no user, show a loading screen.
+  if (loading || !user) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <p>Loading...</p>
+        <p>Loading session...</p>
       </div>
     );
   }
