@@ -92,7 +92,8 @@ export function AppSidebar({ ...props }) {
           <SidebarMenuItem>
             <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-1.5">
               <a href="#">
-                <IconInnerShadowTop className="!size-5" />
+                <div className="h-8 w-8 rounded-lg bg-secondary flex items-center justify-center"> C
+              </div>
                 <span className="text-base font-semibold">CogniCart</span>
               </a>
             </SidebarMenuButton>
