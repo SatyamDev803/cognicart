@@ -1,4 +1,3 @@
-// src/app/auth/callback/page.jsx
 "use client";
 
 import { useEffect, Suspense } from 'react';
@@ -8,7 +7,7 @@ import { useAuth } from '@/context/AuthContext';
 function AuthCallback() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { loginWithToken } = useAuth(); // We will create this function next
+  const { loginWithToken } = useAuth(); 
 
   useEffect(() => {
     const token = searchParams.get('token');

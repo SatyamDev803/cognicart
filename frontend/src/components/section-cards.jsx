@@ -1,4 +1,3 @@
-// src/components/section-cards.jsx
 "use client";
 
 import { IconTrendingDown, IconTrendingUp } from "@tabler/icons-react";

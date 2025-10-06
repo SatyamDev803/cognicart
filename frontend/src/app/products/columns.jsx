@@ -1,4 +1,3 @@
-// src/app/products/columns.jsx
 "use client";
 
 import { Button } from "@/components/ui/button";

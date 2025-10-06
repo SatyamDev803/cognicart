@@ -1,4 +1,3 @@
-// src/components/product-form.jsx
 "use client";
 
 import { useEffect } from "react";

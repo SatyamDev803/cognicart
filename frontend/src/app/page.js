@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -23,36 +25,28 @@ export default function LandingPage() {
     <div className="flex min-h-screen w-full flex-col bg-background text-foreground">
       {/* Floating Navbar */}
       <header className="fixed top-4 left-0 right-0 z-50 px-4">
-        <div className="max-w-7xl mx-auto rounded-xl border bg-background/80 shadow-lg backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto rounded-xl border bg-background/90 shadow-lg backdrop-blur-sm">
           <div className="flex h-16 items-center px-6">
             <Link className="flex items-center justify-center gap-2" href="#">
-              <div className="h-8 w-8 rounded-lg bg-secondary flex items-center justify-center"> C
+              <div className="h-8 w-8 rounded-lg bg-primary text-primary-foreground flex items-center justify-center font-bold">
+                C
               </div>
               <span className="text-xl font-bold font-[family-name:var(--font-space-grotesk)]">CogniCart</span>
             </Link>
             <nav className="ml-auto flex items-center gap-4">
-              <Link
-                href="#features"
-                className="text-sm font-medium hover:text-secondary transition-colors hidden md:inline-block"
-              >
-                Features
-              </Link>
-              <Link
-                href="#solutions"
-                className="text-sm font-medium hover:text-secondary transition-colors hidden md:inline-block"
-              >
-                Solutions
-              </Link>
-              <Link
-                href="#testimonials"
-                className="text-sm font-medium hover:text-secondary transition-colors hidden md:inline-block"
-              >
-                Testimonials
-              </Link>
-              <Button asChild size="sm" className="bg-secondary hover:bg-secondary/90">
+              {["Features", "Solutions", "Testimonials"].map((item) => (
+                <Link
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors hidden md:inline-block"
+                >
+                  {item}
+                </Link>
+              ))}
+              <Button asChild size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
                 <Link href="/login">Login</Link>
               </Button>
-              <Button asChild size="sm" className="bg-secondary hover:bg-secondary/90">
+              <Button asChild size="sm" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
                 <Link href="/register">Get Started</Link>
               </Button>
             </nav>
@@ -68,13 +62,13 @@ export default function LandingPage() {
 
           <div className="w-full max-w-7xl mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center text-center space-y-8">
-              <Badge variant="secondary" className="px-4 py-1.5 text-sm font-medium">
+              <Badge variant="secondary" className="px-4 py-1.5 text-sm font-medium bg-primary/10 text-primary border-primary/20">
                 <Sparkles className="h-3 w-3 mr-1.5 inline" />
                 AI-Powered Analytics Platform
               </Badge>
 
               <h1 className="text-balance font-[family-name:var(--font-space-grotesk)] text-4xl font-bold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl max-w-5xl">
-                Transform Data Into <span className="text-gray-400">Actionable Insights</span>
+                Transform Data Into <span className="text-primary">Actionable Insights</span>
               </h1>
 
               <p className="text-pretty max-w-[700px] text-lg md:text-xl text-muted-foreground leading-relaxed">
@@ -83,13 +77,13 @@ export default function LandingPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-base">
+                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-base">
                   <Link href="/register">
                     Start Free Trial
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="text-base bg-transparent">
+                <Button asChild size="lg" variant="outline" className="text-base border-primary text-primary hover:bg-primary hover:text-white">
                   <Link href="#features">See How It Works</Link>
                 </Button>
               </div>
@@ -103,32 +97,19 @@ export default function LandingPage() {
                 </div>
                 <div className="flex items-center gap-1">
                   {[1, 2, 3, 4, 5].map((i) => (
-                    <Star key={i} className="h-4 w-4 fill-secondary text-secondary" />
+                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                   ))}
-                  <span className="ml-2 text-sm text-muted-foreground">Trusted by 10,000+ e-commerce businesses</span>
+                  <span className="ml-2 text-sm text-muted-foreground">
+                    Trusted by 10,000+ e-commerce businesses
+                  </span>
                 </div>
               </div>
             </div>
-
-            {/* Hero Visual
-            <div className="mt-16 relative">
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
-              <div className="rounded-xl border bg-card shadow-2xl overflow-hidden">
-                <Image
-                  src="/modern-analytics-dashboard.png"
-                  alt="CogniCart Dashboard Preview"
-                  width={1200}
-                  height={675}
-                  className="w-full h-auto"
-                  priority
-                />
-              </div>
-            </div> */}
           </div>
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 bg-muted/40">
+        <section className="py-20 bg-muted/50">
           <div className="w-full max-w-7xl mx-auto px-4 md:px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
@@ -138,7 +119,7 @@ export default function LandingPage() {
                 { value: "4.9/5", label: "Customer Rating" },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold font-[family-name:var(--font-space-grotesk)] text-gray-400">
+                  <div className="text-4xl md:text-5xl font-bold font-[family-name:var(--font-space-grotesk)] text-primary">
                     {stat.value}
                   </div>
                   <div className="text-sm text-muted-foreground mt-2">{stat.label}</div>
@@ -509,7 +490,7 @@ export default function LandingPage() {
                   asChild
                   size="lg"
                   variant="secondary"
-                  className="bg-background text-foreground hover:bg-background/90 text-base"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 text-base"
                 >
                   <Link href="/register">
                     Start Free Trial
@@ -517,10 +498,7 @@ export default function LandingPage() {
                   </Link>
                 </Button>
                 <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="border-secondary-foreground/20 text-secondary-foreground hover:bg-secondary-foreground/10 text-base bg-transparent"
+                  asChild size="lg" variant="outline" className="text-base border-primary text-primary hover:bg-primary hover:text-white"
                 >
                   <Link href="#features">Schedule a Demo</Link>
                 </Button>

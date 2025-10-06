@@ -1,4 +1,3 @@
-// src/components/nav-user.jsx
 "use client";
 import { useTheme } from "next-themes";
 import { Moon, Sun, LogOut, MoreVertical, UserCircle } from "lucide-react";
@@ -25,7 +24,7 @@ export function NavUser({ user }) {
       <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <SidebarMenuButton size="lg" className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+            <SidebarMenuButton size="lg" className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground bg-primary/10">
               <Avatar className="h-8 w-8 rounded-lg"><AvatarImage src="" alt={user.name || user.email} /><AvatarFallback className="rounded-lg">{initials}</AvatarFallback></Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 {/* --- DISPLAY NAME AND EMAIL --- */}

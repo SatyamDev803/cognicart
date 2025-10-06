@@ -1,4 +1,3 @@
-// src/components/app-sidebar.jsx
 "use client";
 
 import * as React from "react";

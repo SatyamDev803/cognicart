@@ -1,4 +1,3 @@
-// src/components/nav-main.jsx
 "use client";
 
 import { usePathname } from "next/navigation";

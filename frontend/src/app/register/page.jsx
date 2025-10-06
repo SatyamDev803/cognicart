@@ -1,4 +1,3 @@
-// src/app/register/page.jsx
 "use client";
 
 import { useState } from "react";
