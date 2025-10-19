@@ -1,6 +1,13 @@
 from pydantic import BaseModel, Field, ConfigDict
-from datetime import datetime
+from datetime import datetime, date
 from typing import Optional
+
+
+class SalesTrendItem(BaseModel):
+    date: date
+    total_revenue: float
+
+    model_config = ConfigDict(from_attributes=True)
 
 class SaleBase(BaseModel):
     product_id: int = Field(..., gt=0) 
