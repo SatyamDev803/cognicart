@@ -4,9 +4,7 @@ import * as React from "react";
 import {
   IconChartBar,
   IconDashboard,
-  IconFolder,
   IconHelp,
-  IconInnerShadowTop,
   IconListDetails,
   IconSearch,
   IconSettings,
@@ -26,9 +24,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { useAuth } from "@/context/AuthContext"; // Import our useAuth hook
+import { useAuth } from "@/context/AuthContext";
 
-// We can keep the static navigation data here for now
 const navMain = [
   {
     title: "Dashboard",
@@ -37,22 +34,22 @@ const navMain = [
   },
   {
     title: "Products",
-    url: "/products", // <-- Correct URL
+    url: "/products", 
     icon: IconListDetails,
   },
   {
     title: "Sales",
-    url: "/sales", // <-- Correct URL
+    url: "/sales",
     icon: IconReceipt,
   },
   {
     title: "Analytics",
-    url: "/analytics", // <-- Future page
+    url: "/analytics", 
     icon: IconChartBar,
   },
   {
     title: "Team",
-    url: "/team", // <-- Future page
+    url: "/team",
     icon: IconUsers,
   },
 ];
@@ -77,9 +74,8 @@ const navSecondary = [
 
 
 export function AppSidebar({ ...props }) {
-  const { user } = useAuth(); // Get the live user from our context
+  const { user } = useAuth(); 
 
-  // Don't render the sidebar if there's no user
   if (!user) {
     return null;
   }

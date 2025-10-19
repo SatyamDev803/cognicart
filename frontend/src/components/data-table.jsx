@@ -7,7 +7,6 @@ import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMe
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-// Add sorting props
 export function DataTable({ columns, data, columnVisibility, setColumnVisibility, globalFilter, setGlobalFilter, sorting, setSorting }) {
   const table = useReactTable({
     data,
@@ -15,14 +14,12 @@ export function DataTable({ columns, data, columnVisibility, setColumnVisibility
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
-    // --- Add Sorting Logic ---
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
-    // -----------------------
     onColumnVisibilityChange: setColumnVisibility,
     onGlobalFilterChange: setGlobalFilter,
     state: {
-      sorting, // Pass sorting state
+      sorting, 
       columnVisibility,
       globalFilter,
     },

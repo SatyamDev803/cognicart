@@ -2,7 +2,6 @@
 import { useTheme } from "next-themes";
 import { Moon, Sun, LogOut, MoreVertical, UserCircle } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
-// We no longer need useRouter, so it has been removed.
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";

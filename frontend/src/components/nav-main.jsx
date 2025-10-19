@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/sidebar";
 
 export function NavMain({ items }) {
-  const pathname = usePathname(); // <-- Get current path
+  const pathname = usePathname(); 
 
   return (
     <SidebarGroup>

@@ -1,16 +1,8 @@
 "use client";
 
-import { IconTrendingDown, IconTrendingUp } from "@tabler/icons-react";
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "@/lib/api";
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardAction,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const fetchSalesAnalytics = async () => {
@@ -24,72 +16,57 @@ export function SectionCards() {
     queryFn: fetchSalesAnalytics,
   });
 
+  const formatCurrency = (value) =>
+    new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(value);
+
+  const SkeletonCard = () => (
+    <Card>
+      <CardHeader>
+        <Skeleton className="h-5 w-3/4" />
+        <Skeleton className="h-8 w-1/2" />
+      </CardHeader>
+    </Card>
+  );
+
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 gap-4 px-4 lg:grid-cols-2 lg:px-6">
-        <Card><CardHeader><Skeleton className="h-6 w-3/4" /><Skeleton className="h-8 w-1/2" /></CardHeader></Card>
-        <Card><CardHeader><Skeleton className="h-6 w-3/4" /><Skeleton className="h-8 w-1/2" /></CardHeader></Card>
-        <Card><CardHeader><Skeleton className="h-6 w-3/4" /><Skeleton className="h-8 w-1/2" /></CardHeader></Card>
-        <Card><CardHeader><Skeleton className="h-6 w-3/4" /><Skeleton className="h-8 w-1/2" /></CardHeader></Card>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
       </div>
     );
   }
 
   if (error) {
-    return <div className="px-4 text-red-500">Failed to load analytics data.</div>;
+    return <p className="text-sm text-destructive col-span-full">Failed to load summary data.</p>;
   }
 
-  const formatCurrency = (value) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(value);
-
   return (
-    // --- THIS IS THE RESPONSIVE LAYOUT FIX ---
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 px-4 lg:px-6">
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
       <Card>
         <CardHeader>
           <CardDescription>Total Revenue</CardDescription>
-          <CardTitle className="text-2xl font-semibold">
-            {formatCurrency(data?.total_revenue || 0)}
-          </CardTitle>
-          <CardAction>
-            <Badge variant="outline"><IconTrendingUp /> +12.5%</Badge>
-          </CardAction>
+          <CardTitle className="text-2xl font-semibold">{formatCurrency(data?.total_revenue || 0)}</CardTitle>
         </CardHeader>
       </Card>
       <Card>
         <CardHeader>
           <CardDescription>Total Sales</CardDescription>
-          <CardTitle className="text-2xl font-semibold">
-            {data?.sales_count || 0}
-          </CardTitle>
-          <CardAction>
-            <Badge variant="outline"><IconTrendingDown /> -20%</Badge>
-          </CardAction>
+          <CardTitle className="text-2xl font-semibold">{data?.sales_count || 0}</CardTitle>
         </CardHeader>
       </Card>
       <Card>
         <CardHeader>
           <CardDescription>Average Sale Value</CardDescription>
-          <CardTitle className="text-2xl font-semibold">
-            {formatCurrency(data?.average_sale || 0)}
-          </CardTitle>
-          <CardAction>
-            <Badge variant="outline"><IconTrendingUp /> +12.5%</Badge>
-          </CardAction>
+          <CardTitle className="text-2xl font-semibold">{formatCurrency(data?.average_sale || 0)}</CardTitle>
         </CardHeader>
       </Card>
       <Card>
         <CardHeader>
           <CardDescription>Growth Rate</CardDescription>
-          <CardTitle className="text-2xl font-semibold">
-            4.5%
-          </CardTitle>
-          <CardAction>
-            <Badge variant="outline"><IconTrendingUp /> +4.5%</Badge>
-          </CardAction>
+          <CardTitle className="text-2xl font-semibold">4.5%</CardTitle>
         </CardHeader>
       </Card>
     </div>

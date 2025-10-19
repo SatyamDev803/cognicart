@@ -8,7 +8,7 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 export function SiteHeader() {
   const pathname = usePathname();
 
-  // Create a mapping from URL paths to friendly titles
+  // Create a mapping from URL paths to titles
   const pathToTitleMap = {
     '/dashboard': 'Dashboard',
     '/products': 'Products',
