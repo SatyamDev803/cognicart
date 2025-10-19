@@ -1,6 +1,15 @@
 from typing import Optional
 from pydantic import BaseModel, Field, ConfigDict
 
+
+class TopProduct(BaseModel):
+    product_id: int
+    product_name: str
+    total_quantity_sold: int
+
+    model_config = ConfigDict(from_attributes=True)
+
+
 class ProductBase(BaseModel):
     name: str = Field(..., min_length=1, max_length=100)
     description: str | None = Field(default=None, max_length=500)
