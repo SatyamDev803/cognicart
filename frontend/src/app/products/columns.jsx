@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"; // Import Tooltip components
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { MoreHorizontal, ArrowUpDown } from "lucide-react";
 
 const formatCurrency = (value) =>
@@ -23,7 +23,6 @@ export const getColumns = ({ user, onEdit, onDelete }) => [
   {
     accessorKey: "description",
     header: "Description",
-    // --- THIS IS THE RESPONSIVE FIX ---
     cell: ({ row }) => {
       const description = row.getValue("description");
       return (
@@ -41,8 +40,8 @@ export const getColumns = ({ user, onEdit, onDelete }) => [
         </TooltipProvider>
       );
     },
-    // ------------------------------------
   },
+  
   {
     accessorKey: "price",
     header: () => <div className="text-right">Price</div>,
