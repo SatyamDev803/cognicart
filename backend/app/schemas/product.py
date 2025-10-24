@@ -2,6 +2,10 @@ from typing import Optional
 from pydantic import BaseModel, Field, ConfigDict
 
 
+class ProductSearchQuery(BaseModel):
+    query: str = Field(..., min_length=1)
+
+
 class TopProduct(BaseModel):
     product_id: int
     product_name: str
