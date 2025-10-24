@@ -12,7 +12,6 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
 
-// API function to fetch the data
 const fetchTopProducts = async () => {
   const { data } = await apiClient.get('/analytics/top-products');
   return data;
@@ -53,11 +52,11 @@ export function TopProductsCard() {
       <div className="space-y-4">
         {topProducts.map((product, index) => (
           <div key={product.product_id} className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-muted-foreground">{index + 1}</span>
+            <div className="flex items-center gap-3 min-w-0">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-muted text-muted-foreground text-xs">{index + 1}</span>
               <p className="text-sm font-medium truncate">{product.product_name}</p>
             </div>
-            <Badge variant="secondary">{product.total_quantity_sold} units</Badge>
+            <Badge variant="secondary" className="whitespace-nowrap">{product.total_quantity_sold} units</Badge>
           </div>
         ))}
       </div>
