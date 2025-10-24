@@ -5,7 +5,7 @@ from typing import List
 from app.db.models import Sale, Product
 from app.schemas.product import TopProduct
 
-async def get_top_selling_product(db: AsyncSession) -> List[TopProduct]:
+async def get_top_selling_products(db: AsyncSession) -> List[TopProduct]:
     query = (
         select(
             Product.id.label("product_id"),
