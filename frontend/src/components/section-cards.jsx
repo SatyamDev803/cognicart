@@ -44,29 +44,29 @@ export function SectionCards() {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <Card>
         <CardHeader>
           <CardDescription>Total Revenue</CardDescription>
-          <CardTitle className="text-2xl font-semibold">{formatCurrency(data?.total_revenue || 0)}</CardTitle>
+          <CardTitle className="text-xl sm:text-2xl font-semibold">{formatCurrency(data?.total_revenue || 0)}</CardTitle>
         </CardHeader>
       </Card>
       <Card>
         <CardHeader>
           <CardDescription>Total Sales</CardDescription>
-          <CardTitle className="text-2xl font-semibold">{data?.sales_count || 0}</CardTitle>
+          <CardTitle className="text-xl sm:text-2xl font-semibold">{data?.sales_count || 0}</CardTitle>
         </CardHeader>
       </Card>
       <Card>
         <CardHeader>
           <CardDescription>Average Sale Value</CardDescription>
-          <CardTitle className="text-2xl font-semibold">{formatCurrency(data?.average_sale || 0)}</CardTitle>
+          <CardTitle className="text-xl sm:text-2xl font-semibold">{formatCurrency(data?.average_sale || 0)}</CardTitle>
         </CardHeader>
       </Card>
       <Card>
         <CardHeader>
           <CardDescription>Growth Rate</CardDescription>
-          <CardTitle className="text-2xl font-semibold">4.5%</CardTitle>
+          <CardTitle className="text-xl sm:text-2xl font-semibold">4.5%</CardTitle>
         </CardHeader>
       </Card>
     </div>
