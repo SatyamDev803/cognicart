@@ -7,8 +7,6 @@ import {
   Sheet,
   SheetTrigger,
   SheetContent,
-  SheetTitle,
-  SheetDescription,
 } from "@/components/ui/sheet";
 import { AiChatInterface } from "./ai-chat-interface";
 
@@ -28,7 +26,6 @@ export default function ChatLauncher() {
         side="right"
         className="w-full sm:max-w-md rounded-l-3xl shadow-xl overflow-hidden p-0 flex flex-col gap-0"
       >
-        {/* Chat interface includes its own top header so the sheet header is removed for a cleaner look */}
         <div className="flex-1 min-h-0">
           <AiChatInterface />
         </div>
