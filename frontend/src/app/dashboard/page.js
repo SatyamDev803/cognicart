@@ -10,7 +10,7 @@ export default function DashboardPage() {
     <DashboardPageLayout>
       <SectionCards />
       
-      <div className="grid gap-6 lg:grid-cols-1">
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
         <ChartAreaInteractive />
         <TopProductsCard />
       </div>
