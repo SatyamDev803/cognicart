@@ -46,6 +46,9 @@ backend/htmlcov/
 *.sqlite3
 *.db
 
+# ChromaDB data
+backend/chroma_data/
+
 # Alembic
 alembic.ini
 migrations/
