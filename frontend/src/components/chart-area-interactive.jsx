@@ -28,7 +28,6 @@ const fetchSalesTrends = async () => {
   return data.sort((a, b) => new Date(a.date) - new Date(b.date));
 };
 
-// ✅ Utility: get CSS variable value from current theme
 function getCSSVar(name) {
   if (typeof window === "undefined") return undefined;
   const style = getComputedStyle(document.documentElement);
@@ -73,7 +72,6 @@ export function ChartAreaInteractive() {
   const { resolvedTheme } = useTheme();
   const [primaryColor, setPrimaryColor] = React.useState("");
 
-  // ✅ Dynamically read --color-primary on theme change
   React.useEffect(() => {
     const updateColor = () => {
       const color = getCSSVar("--color-primary") || "hsl(260, 90%, 61%)";
@@ -81,7 +79,6 @@ export function ChartAreaInteractive() {
     };
     updateColor();
 
-    // recheck when theme changes
     const observer = new MutationObserver(updateColor);
     observer.observe(document.documentElement, {
       attributes: true,
